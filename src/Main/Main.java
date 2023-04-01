@@ -34,18 +34,27 @@ public class Main {
         double averageYear;
         double temp = 1;
         System.out.println("Year\tGrowth(%)");
+        ArrayList<Double> results = new ArrayList<>();
         for(String s : content) {
             String[] lineSplitted = s.split("\t");
             if(lineSplitted[1].equals("12")) {
                 averageYear = temp / Double.parseDouble(lineSplitted[3]);
-                if(averageYear * 100 - 100 > 0)
+                if(averageYear * 100 - 100 > 0) {
                     System.out.println(lineSplitted[0] + "\t+" + decimalFormat.format(averageYear * 100 - 100) + "%");
-                else
-                    System.out.println(lineSplitted[0] + "\t" + decimalFormat.format(averageYear * 100 - 100)  + "%");
+                } else {
+                    System.out.println(lineSplitted[0] + "\t" + decimalFormat.format(averageYear * 100 - 100) + "%");
+                }
+                results.add(averageYear * 100 - 100);
+
             } else if(lineSplitted[1].equals("1")){
                 temp = Double.parseDouble(lineSplitted[3]);
             }
         }
+        double average = 0;
+        for(double i : results)
+            average += i;
+        average = average / results.size() + 1;
+        System.out.println(average);
     }
 
     public static void main(String[] args) throws IOException {
