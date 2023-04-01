@@ -28,7 +28,7 @@ public class Main {
     }
 
 
-    private static DecimalFormat decimalFormat = new DecimalFormat("##.##");
+    private static final DecimalFormat decimalFormat = new DecimalFormat("##.##");
     private static void zad2() throws IOException {
         ArrayList<String> content = (ArrayList<String>) Files.readAllLines(new File("dane2.txt").toPath());
         double averageYear;
